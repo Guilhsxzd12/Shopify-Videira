@@ -1,0 +1,13 @@
+{
+  "type": "footer",
+  "name": "Rodapé",
+  "sections": {
+    "footer": {
+      "type": "videira-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

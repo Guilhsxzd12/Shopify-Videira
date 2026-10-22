@@ -1,0 +1,48 @@
+[
+  {
+    "name": "Videira — Identidade",
+    "settings": [
+      {
+        "type": "color",
+        "id": "wine_color",
+        "label": "Bordô",
+        "default": "#651242"
+      },
+      {
+        "type": "color",
+        "id": "gold_color",
+        "label": "Dourado",
+        "default": "#f8af3c"
+      },
+      {
+        "type": "color",
+        "id": "paper_color",
+        "label": "Creme",
+        "default": "#fdf6e1"
+      },
+      {
+        "type": "image_picker",
+        "id": "brand_logo",
+        "label": "Logotipo"
+      },
+      {
+        "type": "text",
+        "id": "whatsapp",
+        "label": "WhatsApp (DDD + número, somente dígitos)",
+        "default": "5545999056277"
+      },
+      {
+        "type": "checkbox",
+        "id": "whatsapp_checkout",
+        "label": "Mostrar solicitação pelo WhatsApp",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "age_gate_enabled",
+        "label": "Aviso 18+",
+        "default": true
+      }
+    ]
+  }
+]

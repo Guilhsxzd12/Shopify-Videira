@@ -1,0 +1,13 @@
+{
+  "type": "header",
+  "name": "Cabeçalho",
+  "sections": {
+    "header": {
+      "type": "videira-header",
+      "settings": {}
+    }
+  },
+  "order": [
+    "header"
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "sections": {
+    "hero": {
+      "type": "videira-hero",
+      "settings": {}
+    },
+    "types": {
+      "type": "videira-categories",
+      "settings": {},
+      "blocks": {
+        "a": {
+          "type": "category",
+          "settings": {
+            "title": "Tintos"
+          }
+        },
+        "b": {
+          "type": "category",
+          "settings": {
+            "title": "Brancos"
+          }
+        },
+        "c": {
+          "type": "category",
+          "settings": {
+            "title": "Rosés"
+          }
+        },
+        "d": {
+          "type": "category",
+          "settings": {
+            "title": "Espumantes"
+          }
+        }
+      },
+      "block_order": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    "featured": {
+      "type": "videira-featured",
+      "settings": {
+        "limit": 6
+      }
+    },
+    "origins": {
+      "type": "videira-origins",
+      "settings": {},
+      "blocks": {
+        "arg": {
+          "type": "origin",
+          "settings": {
+            "title": "Argentina"
+          }
+        },
+        "chl": {
+          "type": "origin",
+          "settings": {
+            "title": "Chile"
+          }
+        },
+        "br": {
+          "type": "origin",
+          "settings": {
+            "title": "Brasil"
+          }
+        }
+      },
+      "block_order": [
+        "arg",
+        "chl",
+        "br"
+      ]
+    },
+    "editorial": {
+      "type": "videira-editorial",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "types",
+    "featured",
+    "origins",
+    "editorial"
+  ]
+}
