@@ -82,8 +82,8 @@
   },
   "order": [
     "hero",
-    "types",
     "featured",
+    "types",
     "origins",
     "editorial"
   ]
