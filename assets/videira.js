@@ -38,6 +38,31 @@
       drawer.querySelector('[data-drawer-content]').innerHTML = content.innerHTML;
       document.querySelectorAll('[data-cart-count]').forEach(el => { el.textContent = cart.item_count; el.hidden = cart.item_count === 0 && el.classList.contains('sf-cart-count'); });
     };
+    const initializeCarousels = (scope = document) => {
+      scope.querySelectorAll('.wc-section').forEach(section => {
+        const row = section.querySelector('.wc-viewport');
+        const previous = section.querySelector('[data-carousel-step="-1"]');
+        const next = section.querySelector('[data-carousel-step="1"]');
+        if (!row || !previous || !next || row.dataset.carouselReady) return;
+        row.dataset.carouselReady = 'true';
+        const update = () => {
+          const maximum = row.scrollWidth - row.clientWidth;
+          const overflow = maximum > 1;
+          previous.hidden = !overflow;
+          next.hidden = !overflow;
+          previous.disabled = row.scrollLeft <= 1;
+          next.disabled = row.scrollLeft >= maximum - 1;
+        };
+        row.addEventListener('scroll', update, { passive: true });
+        const observer = new ResizeObserver(update);
+        observer.observe(row);
+        const track = row.querySelector('.wc-track');
+        if (track) observer.observe(track);
+        update();
+      });
+    };
+    initializeCarousels();
+    document.addEventListener('shopify:section:load', event => initializeCarousels(event.target));
     document.addEventListener('click', async event => {
       const close = event.target.closest('[data-dialog-close]');
       if (close) close.closest('dialog')?.close();

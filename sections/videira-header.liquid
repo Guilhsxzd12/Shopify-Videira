@@ -1,3 +1,19 @@
+{% liquid
+  assign country_destination = routes.all_products_collection_url
+  assign grape_destination = routes.all_products_collection_url
+  assign vendor_destination = routes.all_products_collection_url
+  for wine in collections.all.products
+    if wine.metafields.custom.country.value != blank
+      assign country_destination = routes.root_url | append: '#paises'
+    endif
+    if wine.metafields.custom.grape.value != blank
+      assign grape_destination = routes.root_url | append: '#uvas'
+    endif
+  endfor
+  if shop.vendors.size > 0
+    assign vendor_destination = routes.root_url | append: '#bodegas'
+  endif
+%}
 <header class="sf-header vn-header"><div class="sf-header-inner">
 <a class="sf-brand" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">{% render 'logo' %}</a>
 <nav class="vn-desktop" aria-label="{{ 'general.navigation' | t }}">
@@ -9,9 +25,9 @@
 <a class="sf-search-toggle" href="{{ routes.search_url }}" aria-label="{{ 'general.search' | t }}">{% render 'icon', name: 'search' %}</a>
 <a class="sf-cart-button" href="{{ routes.cart_url }}" data-cart-open aria-label="{{ 'cart.title' | t }}">{% render 'icon', name: 'bag' %}<span class="sf-cart-count" data-cart-count {% if cart.item_count == 0 %}hidden{% endif %}>{{ cart.item_count }}</span></a></div></div>
 <nav id="vn-mobile" class="vn-mobile" hidden aria-label="{{ 'general.navigation' | t }}"><a href="{{ routes.root_url }}">{{ 'general.home' | t }}</a><a href="{{ routes.all_products_collection_url }}">{{ 'general.all_wines' | t }}</a>
-{% for type in shop.types %}{% if type != blank %}<a href="{{ type | url_for_type }}">{{ type | escape }} ↗</a>{% endif %}{% endfor %}
+{% for type in shop.types %}{% if type != blank %}<a href="{{ type | url_for_type }}">{{ type | escape }} {% render 'icon', name: 'arrow' %}</a>{% endif %}{% endfor %}
 {% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% for child in link.links %}<a href="{{ child.url }}">{{ child.title | escape }}</a>{% endfor %}{% endfor %}
-<a href="{{ routes.root_url }}#paises">{{ 'general.origins' | t }}</a><a href="{{ routes.root_url }}#bodegas">{{ 'general.producers' | t }}</a><a href="{{ routes.root_url }}#sobre">{{ 'general.about' | t }}</a><a href="{{ routes.root_url }}#faq">{{ 'general.help' | t }}</a></nav></header>
+<a href="{{ country_destination }}">{{ 'general.origins' | t }}</a><a href="{{ vendor_destination }}">{{ 'general.producers' | t }}</a><a href="{{ routes.root_url }}#sobre">{{ 'general.about' | t }}</a><a href="{{ routes.root_url }}#faq">{{ 'general.help' | t }}</a></nav></header>
 {% schema %}
 {"name": "Cabeçalho Videira", "settings": [{"type": "link_list", "id": "menu", "label": "Links adicionais"}]}
 {% endschema %}

@@ -1,4 +1,21 @@
 {% doc %}Navigation from Shopify product types and vendors.{% enddoc %}
-<div class="vn-group"><details><summary class="vn-trigger">{{ 'general.wines' | t }} ⌄</summary><div class="vn-dropdown"><span class="vn-caption">{{ 'general.explore' | t }}</span><div class="vn-options">{% for type in shop.types limit: 6 %}{% if type != blank %}<a href="{{ type | url_for_type }}">{{ type | escape }} ↗</a>{% endif %}{% endfor %}</div><a class="vn-view-all" href="{{ routes.all_products_collection_url }}">{{ 'general.all_wines' | t }} →</a></div></details></div>
-<a href="{{ routes.root_url }}#paises">{{ 'general.origins' | t }}</a><a href="{{ routes.root_url }}#uvas">{{ 'general.grapes' | t }}</a>
-<div class="vn-group"><details><summary class="vn-trigger">{{ 'general.producers' | t }} ⌄</summary><div class="vn-dropdown"><span class="vn-caption">{{ 'general.explore' | t }}</span><div class="vn-options">{% for vendor in shop.vendors limit: 6 %}<a href="{{ vendor | url_for_vendor }}">{{ vendor | escape }} ↗</a>{% endfor %}</div><a class="vn-view-all" href="{{ routes.root_url }}#bodegas">{{ 'general.producers' | t }} →</a></div></details></div>
+{% liquid
+  assign country_destination = routes.all_products_collection_url
+  assign grape_destination = routes.all_products_collection_url
+  assign vendor_destination = routes.all_products_collection_url
+  for wine in collections.all.products
+    if wine.metafields.custom.country.value != blank
+      assign country_destination = routes.root_url | append: '#paises'
+    endif
+    if wine.metafields.custom.grape.value != blank
+      assign grape_destination = routes.root_url | append: '#uvas'
+    endif
+  endfor
+  if shop.vendors.size > 0
+    assign vendor_destination = routes.root_url | append: '#bodegas'
+  endif
+%}
+
+<div class="vn-group"><details><summary class="vn-trigger">{{ 'general.wines' | t }} ⌄</summary><div class="vn-dropdown"><span class="vn-caption">{{ 'general.explore' | t }}</span><div class="vn-options">{% for type in shop.types limit: 6 %}{% if type != blank %}<a href="{{ type | url_for_type }}">{{ type | escape }} {% render 'icon', name: 'arrow' %}</a>{% endif %}{% endfor %}</div><a class="vn-view-all" href="{{ routes.all_products_collection_url }}">{{ 'general.all_wines' | t }} {% render 'icon', name: 'arrow' %}</a></div></details></div>
+<a href="{{ country_destination }}">{{ 'general.origins' | t }}</a><a href="{{ grape_destination }}">{{ 'general.grapes' | t }}</a>
+<div class="vn-group"><details><summary class="vn-trigger">{{ 'general.producers' | t }} ⌄</summary><div class="vn-dropdown"><span class="vn-caption">{{ 'general.explore' | t }}</span><div class="vn-options">{% for vendor in shop.vendors limit: 6 %}<a href="{{ vendor | url_for_vendor }}">{{ vendor | escape }} {% render 'icon', name: 'arrow' %}</a>{% endfor %}</div><a class="vn-view-all" href="{{ vendor_destination }}">{{ 'general.producers' | t }} {% render 'icon', name: 'arrow' %}</a></div></details></div>

@@ -1,4 +1,4 @@
-{% assign source = section.settings.collection | default: collections.all %}{% render 'carousel', collection: source, title: section.settings.title, eyebrow: section.settings.eyebrow, limit: section.settings.limit, newest: section.settings.newest %}
+{% assign source = section.settings.collection | default: collections.all %}{% if source.products_count > 1 %}{% render 'carousel', collection: source, title: section.settings.title, eyebrow: section.settings.eyebrow, limit: section.settings.limit, newest: section.settings.newest %}{% endif %}
 {% schema %}
 {"name": "Videira · Carrossel", "settings": [{"type": "collection", "id": "collection", "label": "Coleção"}, {"type": "text", "id": "title", "label": "Título", "default": "Rótulos para descobrir"}, {"type": "text", "id": "eyebrow", "label": "Chamada", "default": "EXPLORE A NOSSA ADEGA"}, {"type": "range", "id": "limit", "label": "Rótulos", "min": 2, "max": 12, "default": 12}, {"type": "checkbox", "id": "newest", "label": "Mais recentes primeiro", "default": false}], "presets": [{"name": "Videira · Carrossel"}]}
 {% endschema %}

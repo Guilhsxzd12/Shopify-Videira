@@ -1,5 +1,21 @@
+{% liquid
+  assign country_destination = routes.all_products_collection_url
+  assign grape_destination = routes.all_products_collection_url
+  assign vendor_destination = routes.all_products_collection_url
+  for wine in collections.all.products
+    if wine.metafields.custom.country.value != blank
+      assign country_destination = routes.root_url | append: '#paises'
+    endif
+    if wine.metafields.custom.grape.value != blank
+      assign grape_destination = routes.root_url | append: '#uvas'
+    endif
+  endfor
+  if shop.vendors.size > 0
+    assign vendor_destination = routes.root_url | append: '#bodegas'
+  endif
+%}
 <section class="sf-service"><div>{% render 'icon', name: 'glass' %}<strong>{{ 'footer.service' | t }}</strong><p>{{ 'footer.service_intro' | t }}</p></div><a href="{{ routes.all_products_collection_url }}">{{ 'general.explore_wines' | t }}{% render 'icon', name: 'arrow' %}</a></section>
-<footer class="sf-footer"><div class="sf-footer-inner"><div class="sf-footer-brand">{% render 'logo' %}<p>{{ 'footer.tagline' | t }}</p><small>{{ 'footer.location' | t }}</small></div><div><h3>{{ 'general.explore' | t }}</h3><a href="{{ routes.all_products_collection_url }}">{{ 'general.all_wines' | t }}</a><a href="{{ routes.root_url }}#paises">{{ 'general.origins' | t }}</a><a href="{{ routes.root_url }}#bodegas">{{ 'general.producers' | t }}</a><a href="{{ routes.root_url }}#sobre">{{ 'general.about' | t }}</a></div><div><h3>{{ 'general.help' | t }}</h3>{% for policy in shop.policies %}{% if policy.body != blank %}<a href="{{ policy.url }}">{{ policy.title | escape }}</a>{% endif %}{% endfor %}{% for link in section.settings.footer_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}<a href="{{ routes.root_url }}#faq">{{ 'home.help_title' | t }}</a></div><div><h3>{{ 'footer.contact' | t }}</h3><div class="sf-footer-social">{% if settings.whatsapp != blank %}<a href="https://wa.me/{{ settings.whatsapp | remove: '+' | remove: ' ' | escape }}" target="_blank" rel="noopener" aria-label="{{ 'footer.whatsapp_support' | t }}">{% render 'social-icon', name: 'whatsapp' %}</a>{% endif %}<a href="https://www.instagram.com/videira.vinhoteca/" target="_blank" rel="noopener" aria-label="Instagram da Videira">{% render 'social-icon', name: 'instagram' %}</a></div><p>{{ 'footer.shipping' | t }}</p></div></div><div class="sf-footer-bottom"><span>© {{ 'now' | date: '%Y' }} {{ shop.name | escape }}</span><span>{{ 'footer.responsible' | t }}</span></div></footer>
+<footer class="sf-footer"><div class="sf-footer-inner"><div class="sf-footer-brand">{% render 'logo' %}<p>{{ 'footer.tagline' | t }}</p><small>{{ 'footer.location' | t }}</small></div><div><h3>{{ 'general.explore' | t }}</h3><a href="{{ routes.all_products_collection_url }}">{{ 'general.all_wines' | t }}</a><a href="{{ country_destination }}">{{ 'general.origins' | t }}</a><a href="{{ vendor_destination }}">{{ 'general.producers' | t }}</a><a href="{{ routes.root_url }}#sobre">{{ 'general.about' | t }}</a></div><div><h3>{{ 'general.help' | t }}</h3>{% for policy in shop.policies %}{% if policy.body != blank %}<a href="{{ policy.url }}">{{ policy.title | escape }}</a>{% endif %}{% endfor %}{% for link in section.settings.footer_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}<a href="{{ routes.root_url }}#faq">{{ 'home.help_title' | t }}</a></div><div><h3>{{ 'footer.contact' | t }}</h3><div class="sf-footer-social">{% if settings.whatsapp != blank %}<a href="https://wa.me/{{ settings.whatsapp | remove: '+' | remove: ' ' | escape }}" target="_blank" rel="noopener" aria-label="{{ 'footer.whatsapp_support' | t }}">{% render 'social-icon', name: 'whatsapp' %}</a>{% endif %}<a href="https://www.instagram.com/videira.vinhoteca/" target="_blank" rel="noopener" aria-label="Instagram da Videira">{% render 'social-icon', name: 'instagram' %}</a></div><p>{{ 'footer.shipping' | t }}</p></div></div><div class="sf-footer-bottom"><span>© {{ 'now' | date: '%Y' }} {{ shop.name | escape }}</span><span>{{ 'footer.responsible' | t }}</span></div></footer>
 {% schema %}
 {"name": "Rodapé Videira", "settings": [{"type": "link_list", "id": "footer_menu", "label": "Menu de informações"}]}
 {% endschema %}
