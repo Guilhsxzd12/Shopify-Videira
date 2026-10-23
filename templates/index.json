@@ -6,39 +6,7 @@
     },
     "types": {
       "type": "videira-categories",
-      "settings": {},
-      "blocks": {
-        "a": {
-          "type": "category",
-          "settings": {
-            "title": "Tintos"
-          }
-        },
-        "b": {
-          "type": "category",
-          "settings": {
-            "title": "Brancos"
-          }
-        },
-        "c": {
-          "type": "category",
-          "settings": {
-            "title": "Rosés"
-          }
-        },
-        "d": {
-          "type": "category",
-          "settings": {
-            "title": "Espumantes"
-          }
-        }
-      },
-      "block_order": [
-        "a",
-        "b",
-        "c",
-        "d"
-      ]
+      "settings": {}
     },
     "featured": {
       "type": "videira-featured",
@@ -46,34 +14,30 @@
         "limit": 6
       }
     },
+    "discover_wines": {
+      "type": "videira-carousel",
+      "settings": {
+        "title": "Rótulos para descobrir",
+        "eyebrow": "EXPLORE A NOSSA ADEGA",
+        "limit": 12
+      }
+    },
     "origins": {
       "type": "videira-origins",
-      "settings": {},
-      "blocks": {
-        "arg": {
-          "type": "origin",
-          "settings": {
-            "title": "Argentina"
-          }
-        },
-        "chl": {
-          "type": "origin",
-          "settings": {
-            "title": "Chile"
-          }
-        },
-        "br": {
-          "type": "origin",
-          "settings": {
-            "title": "Brasil"
-          }
-        }
-      },
-      "block_order": [
-        "arg",
-        "chl",
-        "br"
-      ]
+      "settings": {}
+    },
+    "new": {
+      "type": "videira-carousel",
+      "settings": {
+        "title": "Novidades",
+        "eyebrow": "OS ÚLTIMOS RÓTULOS ADICIONADOS",
+        "limit": 12,
+        "newest": true
+      }
+    },
+    "discover": {
+      "type": "videira-discover",
+      "settings": {}
     },
     "editorial": {
       "type": "videira-editorial",
@@ -84,7 +48,10 @@
     "hero",
     "types",
     "featured",
+    "discover_wines",
     "origins",
+    "new",
+    "discover",
     "editorial"
   ]
 }

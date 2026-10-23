@@ -1,28 +1,5 @@
-<section id="selecao" class="ve-selection ve-selection--original">
-  <div class="selection-intro">
-    <p class="kicker">ESCOLHAS DA VIDEIRA</p>
-    <h2>Seu próximo <em>bom vinho.</em></h2>
-    <p>Conheça os rótulos da nossa seleção. Explore as origens, as uvas e as histórias de cada garrafa.</p>
-    <a class="underlined" href="{{ routes.all_products_collection_url }}">Ver o catálogo completo ↗</a>
-    <div class="advice"><span aria-hidden="true">✦</span><p>Encontre o vinho ideal para sua mesa.<br><a href="{{ routes.all_products_collection_url }}">Explore nossa seleção.</a></p></div>
-  </div>
-  <div class="selection-grid">
-    <div class="section-heading"><p class="kicker">CONHEÇA CADA RÓTULO</p><h2>Na nossa seleção</h2></div>
-    {% assign featured_collection = section.settings.collection %}
-    {% if featured_collection == blank %}{% assign featured_collection = collections['all'] %}{% endif %}
-    <div class="ve-carousel-wrap">
-      <button type="button" class="ve-carousel-arrow" data-videira-scroll="-1" aria-label="Ver vinhos anteriores">←</button>
-      <div class="cards-scroll" id="featured-cards-{{ section.id }}" data-videira-carousel>
-        {% for product in featured_collection.products limit: section.settings.limit %}
-          {% render 'product-card', product: product %}
-        {% else %}
-          <p class="ve-empty">Cadastre produtos na Shopify para exibir os rótulos aqui.</p>
-        {% endfor %}
-      </div>
-      <button type="button" class="ve-carousel-arrow" data-videira-scroll="1" aria-label="Ver próximos vinhos">→</button>
-    </div>
-  </div>
-</section>
+{% assign source = section.settings.collection | default: collections.all %}
+<section id="selecao" class="ve-selection"><div class="ve-selection-intro"><p class="ve-kicker">{{ 'home.selection_eyebrow' | t }}</p><h2>{{ 'home.selection_title' | t }} <span>{{ 'home.selection_accent' | t }}</span></h2><p>{{ 'home.selection_intro' | t }}</p><a class="ve-text-link" href="{{ routes.all_products_collection_url }}">{{ 'home.full_catalog' | t }}{% render 'icon', name: 'arrow' %}</a></div><div class="ve-selection-products">{% assign title = 'home.curated' | t %}{% assign eyebrow = 'home.each_label' | t %}{% render 'carousel', collection: source, title: title, eyebrow: eyebrow, limit: section.settings.limit %}</div></section>
 {% schema %}
-{"name":"Videira · Seleção de vinhos","settings":[{"type":"collection","id":"collection","label":"Coleção em destaque"},{"type":"range","id":"limit","label":"Quantidade","min":2,"max":12,"default":6}],"presets":[{"name":"Videira · Seleção de vinhos"}]}
+{"name": "Videira · Seleção", "settings": [{"type": "collection", "id": "collection", "label": "Coleção"}, {"type": "range", "id": "limit", "label": "Rótulos", "min": 2, "max": 12, "default": 6}], "presets": [{"name": "Videira · Seleção"}]}
 {% endschema %}

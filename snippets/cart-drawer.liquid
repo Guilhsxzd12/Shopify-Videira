@@ -1,0 +1,2 @@
+{% doc %}Shopify cart drawer, progressively enhanced from native cart links.{% enddoc %}
+<dialog class="sf-cart" data-cart-dialog aria-labelledby="cart-title"><div class="sf-cart-inner"><div class="sf-cart-heading"><h2 id="cart-title">{{ 'cart.title' | t }} <small data-cart-count>{{ cart.item_count }}</small></h2><button type="button" data-dialog-close aria-label="{{ 'general.close' | t }}">{% render 'icon', name: 'close' %}</button></div><div data-drawer-content>{% render 'cart-content' %}</div></div></dialog>

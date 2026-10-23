@@ -1,1 +1,4 @@
-<section class="simple-page"><p class="kicker">VIDEIRA VINHOTECA</p><h1>Página não encontrada.</h1><p>Não encontramos o que você procura.</p><a class="btn" href="{{ routes.all_products_collection_url }}">Explore os vinhos</a></section>{% schema %}{"name":"404 Videira","settings":[]} {% endschema %}
+<section class="sf-section sf-not-found"><h1>{{ 'general.not_found' | t }}</h1><p>{{ 'general.not_found_intro' | t }}</p><a class="sf-button" href="{{ routes.all_products_collection_url }}">{{ 'general.explore_wines' | t }}</a></section>
+{% schema %}
+{"name": "404 Videira", "settings": []}
+{% endschema %}

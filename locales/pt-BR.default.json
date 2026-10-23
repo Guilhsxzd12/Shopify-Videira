@@ -1,10 +1,148 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin language editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
-{}
+{
+  "general": {
+    "skip": "Pular para o conteúdo",
+    "navigation": "Navegação principal",
+    "home": "Início",
+    "store": "Loja",
+    "wine_store": "Loja de vinhos",
+    "about": "A Videira",
+    "menu": "Abrir menu",
+    "search": "Pesquisar vinhos",
+    "all_wines": "Todos os vinhos",
+    "origins": "Países",
+    "producers": "Bodegas",
+    "grapes": "Uvas",
+    "help": "Entregas e atendimento",
+    "explore": "Explore a Videira",
+    "explore_wines": "Explore os vinhos",
+    "wines": "Vinhos",
+    "view_all": "Ver todos",
+    "previous": "Ver vinhos anteriores",
+    "next": "Ver próximos vinhos",
+    "close": "Fechar",
+    "breadcrumb": "Caminho de navegação",
+    "not_found": "Página não encontrada.",
+    "not_found_intro": "Não encontramos o que você procura.",
+    "collections": "Coleções"
+  },
+  "product": {
+    "sold_out": "Indisponível",
+    "no_image": "Fotografia ainda não disponível",
+    "from": "A partir de",
+    "price": "Preço",
+    "add": "Adicionar ao carrinho",
+    "options": "Escolher opções",
+    "empty": "Os próximos rótulos serão apresentados aqui assim que cadastrados.",
+    "zoom": "Ampliar fotografia",
+    "delivery": "Disponibilidade conforme o estoque. Frete e pagamento calculados no checkout.",
+    "variant": "Escolha uma opção",
+    "quantity": "Quantidade",
+    "about": "Sobre este vinho",
+    "specifications": "Ficha técnica",
+    "type": "Tipo de vinho",
+    "related": "Outros vinhos para descobrir",
+    "added": "Vinho adicionado ao carrinho.",
+    "error": "Não foi possível adicionar o vinho. Tente novamente.",
+    "cart_error": "Não foi possível carregar o carrinho. Abra a página do carrinho para continuar."
+  },
+  "catalog": {
+    "filter": "Filtrar",
+    "refine": "Refine sua escolha",
+    "min": "De R$",
+    "max": "Até R$",
+    "clear": "Limpar filtros",
+    "apply": "Aplicar",
+    "search_placeholder": "Buscar vinho, uva, país ou bodega…",
+    "count": {
+      "one": "{{ count }} rótulo encontrado",
+      "other": "{{ count }} rótulos encontrados"
+    },
+    "sort": "Ordenar por",
+    "empty": "Nenhum vinho encontrado. Experimente outras palavras ou ajuste seus filtros.",
+    "pages": "Páginas do catálogo"
+  },
+  "cart": {
+    "title": "Minha seleção",
+    "remove": "Remover",
+    "subtotal": "Subtotal",
+    "delivery": "Frete, descontos e formas de pagamento apresentados no checkout.",
+    "update": "Atualizar carrinho",
+    "checkout": "Finalizar compra",
+    "empty": "Sua próxima descoberta está por aqui.",
+    "empty_intro": "Explore o catálogo e adicione seus vinhos favoritos."
+  },
+  "home": {
+    "hero_alt": "Taças de vinho reunidas em um brinde à mesa",
+    "location": "VIDEIRA VINHOTECA · FOZ DO IGUAÇU",
+    "hero_one": "O vinho.",
+    "hero_two": "A conversa.",
+    "hero_three": "O encontro.",
+    "hero_intro": "Vinhos com origem, personalidade e lugar à sua mesa.",
+    "selection_link": "Conheça a nossa seleção",
+    "hero_caption": "BONS MOMENTOS COMEÇAM À MESA.",
+    "selection_eyebrow": "ESCOLHAS DA VIDEIRA",
+    "selection_title": "Seu próximo",
+    "selection_accent": "bom vinho.",
+    "selection_intro": "Conheça os rótulos da nossa seleção. Explore as origens, as uvas e as histórias de cada garrafa.",
+    "full_catalog": "Ver o catálogo completo",
+    "curated": "Na nossa seleção",
+    "each_label": "CONHEÇA CADA RÓTULO",
+    "origins_eyebrow": "CADA ORIGEM, UMA DESCOBERTA",
+    "world_one": "Um mundo",
+    "world_two": "dentro de",
+    "world_three": "uma taça.",
+    "origins_intro": "Encontre seu vinho pelo lugar de onde ele vem.",
+    "all_origins": "Explore todas as origens",
+    "discover_eyebrow": "SIGA A SUA CURIOSIDADE",
+    "discover_title": "Mais caminhos para descobrir.",
+    "by_grape": "Pela uva",
+    "by_producer": "Pela bodega",
+    "about_eyebrow": "PRAZER, SOMOS A VIDEIRA",
+    "about_one": "A melhor parte do vinho",
+    "about_two": "é com quem você",
+    "about_three": "compartilha.",
+    "about_intro": "De Foz do Iguaçu para a sua mesa. Um catálogo para explorar no seu tempo, com atendimento próximo para ajudar na escolha.",
+    "about_checkout": "Escolha seus rótulos, confira sua seleção no carrinho e finalize sua compra com segurança pela nossa loja.",
+    "faq_eyebrow": "DO CATÁLOGO À SUA MESA",
+    "help_title": "Podemos ajudar?",
+    "question_1": "Como fazer um pedido?",
+    "answer_1": "Adicione os vinhos ao carrinho, confira as quantidades e selecione Finalizar compra. No checkout, informe seus dados e escolha entre as opções de entrega e pagamento disponíveis.",
+    "question_2": "Como funciona a entrega?",
+    "answer_2": "Informe seu CEP no checkout para consultar as opções de entrega, os prazos e o frete disponíveis para seu endereço.",
+    "question_3": "Preciso criar uma conta?",
+    "answer_3": "Você pode explorar o catálogo sem cadastro. Ao finalizar a compra, siga as opções de identificação apresentadas no checkout."
+  },
+  "footer": {
+    "service": "Uma boa escolha começa aqui.",
+    "service_intro": "Conte com a Videira para encontrar seu próximo vinho.",
+    "tagline": "Vinhos com identidade. Momentos que ficam.",
+    "location": "Foz do Iguaçu · Paraná",
+    "contact": "Vamos conversar?",
+    "whatsapp_support": "Atendimento pelo WhatsApp",
+    "shipping": "Consulte as opções de entrega e pagamento no checkout.",
+    "responsible": "Venda proibida para menores de 18 anos. Beba com moderação."
+  },
+  "age": {
+    "welcome": "BEM-VINDO À VIDEIRA",
+    "question": "Você tem 18 anos ou mais?",
+    "intro": "Este site contém informações sobre bebidas alcoólicas e é destinado somente a maiores de 18 anos.",
+    "accept": "Sim, tenho 18+",
+    "deny": "Não",
+    "denied": "Obrigado pela sinceridade. Este conteúdo é destinado exclusivamente a maiores de 18 anos. Se você selecionou Não por engano, atualize esta página."
+  },
+  "spec": {
+    "country": "País",
+    "region": "Região",
+    "grape": "Uvas",
+    "vintage": "Safra",
+    "volume": "Volume",
+    "alcohol": "Teor alcoólico",
+    "aging": "Amadurecimento",
+    "serving_temperature": "Temperatura de serviço",
+    "visual": "Visual",
+    "aromas": "Aromas",
+    "palate": "Paladar",
+    "tasting_notes": "Notas de degustação",
+    "pairing": "Harmonizações"
+  }
+}
