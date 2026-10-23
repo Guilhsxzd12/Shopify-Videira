@@ -1,1 +1,31 @@
-{% assign p = product %}<article class="wine-card"><a href="{{ p.url }}" class="wine-photo">{% if p.featured_image %}{{ p.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: p.title }}{% else %}<span>Fotografia em breve</span>{% endif %}</a><div class="wine-info"><p class="kicker">{{ p.vendor | escape }}{% if p.metafields.custom.country.value %} · {{ p.metafields.custom.country.value | escape }}{% endif %}</p><h3><a href="{{ p.url }}">{{ p.title | escape }}</a></h3>{% if p.available %}<p class="wine-price">{{ p.price | money }}{% if p.compare_at_price > p.price %} <s>{{ p.compare_at_price | money }}</s>{% endif %}</p>{% else %}<p>Indisponível</p>{% endif %}<a class="card-link" href="{{ p.url }}">Conheça este vinho <span>↗</span></a></div></article>
+{% doc %}
+Card editorial de vinho, exibindo a imagem real do produto cadastrado no Shopify.
+@param {product} product - Produto a apresentar
+{% enddoc %}
+<article class="wine-card">
+  <a href="{{ product.url }}" class="wine-photo" aria-label="Conhecer {{ product.title | escape }}">
+    {% if product.featured_image != blank %}
+      {{ product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: product.title, sizes: '(max-width: 640px) 65vw, (max-width: 1000px) 32vw, 22vw', widths: '240,360,540,720,900' }}
+    {% else %}
+      <span class="ve-missing-photo">Imagem do rótulo em breve</span>
+    {% endif %}
+  </a>
+  <div class="wine-info">
+    <p class="kicker">{{ product.vendor | escape }}{% if product.metafields.custom.country.value != blank %} · {{ product.metafields.custom.country.value | escape }}{% endif %}</p>
+    <h3><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
+    {% if product.available %}
+      <p class="wine-price">{{ product.price | money }}{% if product.compare_at_price > product.price %} <s>{{ product.compare_at_price | money }}</s>{% endif %}</p>
+      {% if product.has_only_default_variant %}
+        {% form 'product', product, class: 've-quick-add' %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <button type="submit" class="ve-add-button">Adicionar ao carrinho <span aria-hidden="true">+</span></button>
+        {% endform %}
+      {% else %}
+        <a class="ve-add-button" href="{{ product.url }}">Escolher opções <span aria-hidden="true">↗</span></a>
+      {% endif %}
+    {% else %}
+      <p class="ve-sold-out">Indisponível</p>
+    {% endif %}
+    <a class="card-link" href="{{ product.url }}">Conheça este vinho <span aria-hidden="true">↗</span></a>
+  </div>
+</article>
