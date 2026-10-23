@@ -1,0 +1,4 @@
+{% doc %}
+Videira original logo or merchant-selected logo.
+{% enddoc %}
+{% if settings.brand_logo %}{{ settings.brand_logo | image_url: width: 400 | image_tag: alt: shop.name, widths: '180,280,400' }}{% else %}<img src="{{ 'videira-logo.svg' | asset_url }}" alt="Videira Vinhoteca" width="180" height="63">{% endif %}

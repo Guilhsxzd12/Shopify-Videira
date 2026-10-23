@@ -3,7 +3,7 @@
     "name": "theme_info",
     "theme_name": "Videira Vinhoteca",
     "theme_author": "Videira Vinhoteca",
-    "theme_version": "1.0.1",
+    "theme_version": "2.0.0",
     "theme_documentation_url": "https://github.com/Guilhsxzd12/Shopify-Videira",
     "theme_support_url": "https://github.com/Guilhsxzd12/Shopify-Videira/issues"
   },
@@ -38,12 +38,6 @@
         "id": "whatsapp",
         "label": "WhatsApp (DDD + número, somente dígitos)",
         "default": "5545999056277"
-      },
-      {
-        "type": "checkbox",
-        "id": "whatsapp_checkout",
-        "label": "Mostrar solicitação pelo WhatsApp",
-        "default": true
       },
       {
         "type": "checkbox",

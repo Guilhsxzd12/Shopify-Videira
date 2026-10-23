@@ -1,1 +1,24 @@
-<!doctype html><html lang="{{ request.locale.iso_code }}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="{{ settings.wine_color }}"><title>{{ page_title | escape }}{% unless page_title contains shop.name %} — {{ shop.name | escape }}{% endunless %}</title>{{ content_for_header }}{{ 'videira.css' | asset_url | stylesheet_tag }}{{ 'videira-fidelidade.css' | asset_url | stylesheet_tag }}<script src="{{ 'videira.js' | asset_url }}" defer></script><script src="{{ 'videira-fidelidade.js' | asset_url }}" defer></script></head><body class="videira template-{{ request.page_type }}" style="--wine:{{ settings.wine_color }};--gold:{{ settings.gold_color }};--paper:{{ settings.paper_color }}"><a class="skip-link" href="#main">Pular para o conteúdo</a>{% sections 'header-group' %}<main id="main">{{ content_for_layout }}</main>{% sections 'footer-group' %}{% render 'age-gate' %}</body></html>
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="{{ settings.wine_color }}">
+<title>{{ page_title | escape }}{% unless page_title contains shop.name %} — {{ shop.name | escape }}{% endunless %}</title>
+{% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+<link rel="canonical" href="{{ canonical_url }}">
+
+
+
+<style>@font-face{font-family:Poppins;font-style:normal;font-weight:300;font-display:swap;src:url('{{ 'poppins-300.ttf' | asset_url }}') format('truetype')}@font-face{font-family:Poppins;font-style:normal;font-weight:400;font-display:swap;src:url('{{ 'poppins-400.ttf' | asset_url }}') format('truetype')}@font-face{font-family:Poppins;font-style:normal;font-weight:600;font-display:swap;src:url('{{ 'poppins-600.ttf' | asset_url }}') format('truetype')}@font-face{font-family:Poppins;font-style:normal;font-weight:700;font-display:swap;src:url('{{ 'poppins-700.ttf' | asset_url }}') format('truetype')}</style>
+{{ 'videira.css' | asset_url | stylesheet_tag }}
+{{ 'shopify-integration.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'videira.js' | asset_url }}" defer></script>
+<script type="application/json" id="videira-config">{"root":{{ routes.root_url | json }},"cart":{{ routes.cart_url | json }},"add":{{ 'product.add' | t | json }},"soldOut":{{ 'product.sold_out' | t | json }},"added":{{ 'product.added' | t | json }},"error":{{ 'product.error' | t | json }},"cartError":{{ 'product.cart_error' | t | json }}}</script>
+{{ content_for_header }}
+</head><body class="storefront template-{{ request.page_type }}">
+<a class="sf-skip" href="#conteudo">{{ 'general.skip' | t }}</a>
+{% sections 'header-group' %}
+<main id="conteudo" class="{% if request.page_type == 'index' %}ve-home{% elsif request.page_type == 'product' %}pd-main{% endif %}">{{ content_for_layout }}</main>
+{% sections 'footer-group' %}
+{% render 'cart-drawer' %}{% render 'age-gate' %}
+<div class="sf-toast" role="status" aria-live="polite" data-cart-status></div>
+</body></html>

@@ -1,31 +1,11 @@
 {% doc %}
-Card editorial de vinho, exibindo a imagem real do produto cadastrado no Shopify.
-@param {product} product - Produto a apresentar
+@param {product} product - Shopify product
 {% enddoc %}
-<article class="wine-card">
-  <a href="{{ product.url }}" class="wine-photo" aria-label="Conhecer {{ product.title | escape }}">
-    {% if product.featured_image != blank %}
-      {{ product.featured_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: product.title, sizes: '(max-width: 640px) 65vw, (max-width: 1000px) 32vw, 22vw', widths: '240,360,540,720,900' }}
-    {% else %}
-      <span class="ve-missing-photo">Imagem do rótulo em breve</span>
-    {% endif %}
-  </a>
-  <div class="wine-info">
-    <p class="kicker">{{ product.vendor | escape }}{% if product.metafields.custom.country.value != blank %} · {{ product.metafields.custom.country.value | escape }}{% endif %}</p>
-    <h3><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
-    {% if product.available %}
-      <p class="wine-price">{{ product.price | money }}{% if product.compare_at_price > product.price %} <s>{{ product.compare_at_price | money }}</s>{% endif %}</p>
-      {% if product.has_only_default_variant %}
-        {% form 'product', product, class: 've-quick-add' %}
-          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-          <button type="submit" class="ve-add-button">Adicionar ao carrinho <span aria-hidden="true">+</span></button>
-        {% endform %}
-      {% else %}
-        <a class="ve-add-button" href="{{ product.url }}">Escolher opções <span aria-hidden="true">↗</span></a>
-      {% endif %}
-    {% else %}
-      <p class="ve-sold-out">Indisponível</p>
-    {% endif %}
-    <a class="card-link" href="{{ product.url }}">Conheça este vinho <span aria-hidden="true">↗</span></a>
-  </div>
-</article>
+<article class="sf-wine-card"><a class="sf-wine-visual" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+{% unless product.available %}<div class="sf-product-badges"><span>{{ 'product.sold_out' | t }}</span></div>{% endunless %}
+{% if product.featured_image %}{{ product.featured_image | image_url: width: 720 | image_tag: class: 'wine-photo', loading: 'lazy', widths: '180,360,540,720', sizes: '(max-width: 760px) 45vw, 245px', alt: product.title }}{% else %}<span class="wine-photo-placeholder">{% render 'icon', name: 'glass' %}<small>{{ 'product.no_image' | t }}</small></span>{% endif %}</a>
+<div class="sf-wine-info"><div class="sf-wine-origin">{{ product.metafields.custom.region.value | escape }}{% if product.metafields.custom.country.value != blank %} · {{ product.metafields.custom.country.value | escape }}{% endif %}</div>
+<a href="{{ product.url }}"><h3>{{ product.title | escape }}</h3></a><p>{{ product.vendor | escape }}</p><span class="sf-wine-grape">{{ product.metafields.custom.grape.value | default: product.type | escape }}</span>
+<div class="sf-wine-price"><small>{% if product.price_varies %}{{ 'product.from' | t }}{% else %}{{ 'product.price' | t }}{% endif %}</small>{% if product.compare_at_price > product.price %}<del>{{ product.compare_at_price | money }}</del>{% endif %}<strong>{{ product.price | money }}</strong></div>
+{% if product.available %}{% if product.has_only_default_variant %}{% form 'product', product, class: 'sf-quick-add', data-shopify-add: '' %}<input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}"><button class="sf-add" type="submit">{% render 'icon', name: 'bag' %}{{ 'product.add' | t }}</button>{% endform %}{% else %}<a class="sf-add" href="{{ product.url }}">{{ 'product.options' | t }}</a>{% endif %}{% else %}<button class="sf-add" disabled>{{ 'product.sold_out' | t }}</button>{% endif %}
+</div></article>
