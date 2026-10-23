@@ -1,1 +1,15 @@
-<section class="ve-hero">{% if section.settings.image %}{{ section.settings.image | image_url: width: 2400 | image_tag: class: 'hero-image', loading: 'eager' }}{% else %}<div class="hero-image hero-fallback"></div>{% endif %}<div class="hero-shade"></div><div class="hero-inner"><p class="kicker">VIDEIRA VINHOTECA · FOZ DO IGUAÇU</p><h1>O vinho.<br>A conversa.<br><em>O encontro.</em></h1><div class="hero-bottom"><p>Vinhos com origem, personalidade<br>e lugar à sua mesa.</p><a class="btn" href="{{ section.settings.link | default: routes.all_products_collection_url }}">Explore os vinhos <span>↗</span></a></div></div><a class="hero-scroll" href="#selecao">Conheça a nossa seleção ↓</a><p class="hero-caption">BONS MOMENTOS COMEÇAM À MESA.</p></section>{% schema %}{"name":"Videira · Banner editorial","settings":[{"type":"image_picker","id":"image","label":"Foto de fundo"},{"type":"url","id":"link","label":"Destino do botão"}],"presets":[{"name":"Videira · Banner editorial"}]}{% endschema %}
+<section class="ve-hero ve-hero--original" aria-label="Videira Vinhoteca">
+{% if section.settings.image != blank %}
+  {{ section.settings.image | image_url: width: 2400 | image_tag: class: 'hero-image', loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '750,1100,1500,2000,2400' }}
+{% else %}
+  <img class="hero-image" src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&amp;fit=crop&amp;w=2200&amp;q=85" alt="Taças de vinho em um brinde à mesa" fetchpriority="high" width="2200" height="1450">
+{% endif %}
+<div class="hero-shade"></div>
+<div class="hero-inner"><p class="kicker">VIDEIRA VINHOTECA · FOZ DO IGUAÇU</p><h1>O vinho.<br>A conversa.<br><em>O encontro.</em></h1>
+<div class="hero-bottom"><p>Vinhos com origem, personalidade<br>e lugar à sua mesa.</p><a class="btn" href="{{ section.settings.link | default: routes.all_products_collection_url }}">Explore os vinhos <span aria-hidden="true">↗</span></a></div></div>
+<a class="hero-scroll" href="#selecao">Conheça a nossa seleção <span aria-hidden="true">↓</span></a>
+<p class="hero-caption">BONS MOMENTOS COMEÇAM À MESA.</p>
+</section>
+{% schema %}
+{"name":"Videira · Banner editorial","settings":[{"type":"image_picker","id":"image","label":"Foto de fundo (opcional)"},{"type":"url","id":"link","label":"Destino do botão"}],"presets":[{"name":"Videira · Banner editorial"}]}
+{% endschema %}
